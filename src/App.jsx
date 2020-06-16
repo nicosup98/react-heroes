@@ -6,6 +6,14 @@ export class App extends Component {
   state = {
     heroes:[]
   }
+  componentDidUpdate(){
+    //api call
+  }
+
+  filter(name){
+   const heroes =this.state.heroes.filter(v => v == name)
+   this.setState({heroes})
+  }
   render(){
     return(
       <div>

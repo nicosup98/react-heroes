@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": false,
+        "jsx": "react",
+        "outDir": "/dist"
+
+    }
+}
