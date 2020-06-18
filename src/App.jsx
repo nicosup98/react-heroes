@@ -1,32 +1,50 @@
 import React,{Component} from 'react';
 import './App.scss';
 import {NavBar} from './components/navBar'
+import {Route,Switch,BrowserRouter as Router,Link} from 'react-router-dom'
+import {routes} from './routes/routes'
 
 export class App extends Component {
   state = {
-    heroes:[]
+    heroes:[],
+    name:""
   }
-  componentDidUpdate(){
+  componentDidMount(){
     //api call
   }
+  search(event){
 
-  filter(name){
-   const heroes =this.state.heroes.filter(v => v == name)
-   this.setState({heroes})
   }
+  cangeName(event){
+
+  }
+  
   render(){
     return(
-      <div>
-        <NavBar />
+      <Router>
+        <NavBar >
+          <div className="columns">
+            <div className="column "><Link to="/"><span className="has-text-link-light">Home</span></Link></div>
+            <div className="column "><Link to="/about"> <span className="has-text-link-light">About</span></Link></div>
+          </div>
+        </NavBar>
         <div className="section has-background-light">
           <div className="container">
             <div className="columns">
-              <div className="column "><span>hola</span></div>
-              <div className="column"><span>perro</span></div>
+              <Switch>
+                {routes.map((route,i)=>(
+                  <Route
+                    key={i}
+                    path={route.path}
+                    exact={route.exact}
+                    children={<route.component />}
+                  />
+                ))}
+              </Switch>
             </div>
           </div>
         </div>
-      </div>
+      </Router>
     )
   }
 }
