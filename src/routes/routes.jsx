@@ -4,8 +4,8 @@ import {About} from '../pages/about'
 export const routes = [{
     path:"/",
     exact:true,
-    component: function(){
-        return <Home />
+    component: function(props){
+        return <Home {...props} />
     }
 },
 {

@@ -1,6 +1,4 @@
 import React from "react"
-import { Router, Link } from 'react-router-dom'
-import { routes } from '../routes/routes'
 
 export const NavBar = (props) => (
     <nav className="hero is-info">

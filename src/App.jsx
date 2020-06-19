@@ -4,19 +4,28 @@ import {NavBar} from './components/navBar'
 import {Route,Switch,BrowserRouter as Router,Link} from 'react-router-dom'
 import {routes} from './routes/routes'
 
-export class App extends Component {
-  state = {
-    heroes:[],
-    name:""
+export class App extends Component{
+  constructor(props){
+    // encontrar el one-liner de esto
+    super(props)
+    this.state = {
+      heroes:[],
+      name:""
+    }
+    this.search = this.search.bind(this)
+    this.changeName = this.changeName.bind(this)
   }
   componentDidMount(){
     //api call
   }
   search(event){
-
+    console.log("a buscar",event.target.value)
   }
-  cangeName(event){
-
+  changeName(event){
+    console.log(event.target.value)
+    let {name} = this.state
+    name =event.target.value
+    this.setState({...this.state,name})
   }
   
   render(){
@@ -37,7 +46,7 @@ export class App extends Component {
                     key={i}
                     path={route.path}
                     exact={route.exact}
-                    children={<route.component />}
+                    children={<route.component {...this.state} search={this.search} changeName={this.changeName} />}
                   />
                 ))}
               </Switch>

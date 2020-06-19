@@ -1,7 +1,7 @@
 import React from 'react'
-
-export const Home = ()=> (
+import {Search} from '../components/search'
+export const Home = (props)=> (
     <div>
-        home
+        <Search {...props}/>
     </div>
 )
