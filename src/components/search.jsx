@@ -7,15 +7,15 @@ export const Search = (props)=>(
                 <input type="text" value={props.name} onChange={props.changeName} className='input is-rounded is-medium'/>
             </div>
             <div className="column">
-                <button className="button is-info" onClick={props.search} >buscar</button>
+                <button className="button is-info is-medium" onClick={props.search} >buscar</button>
             </div>
         </div>
         <div className="section">
             <div className="container">
-                <div className="columns">
-                {props.heroes.map(element => (
+                <div className="columns is-desktop is-flex-desktop">
+                {props.heroes.map((element,i) => (
                     <div className="column">
-                        <DisplayData {...element} />
+                        <DisplayData key={i} {...element} />
                     </div>
 ))}
                 </div>

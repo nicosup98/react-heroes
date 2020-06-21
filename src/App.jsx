@@ -3,6 +3,8 @@ import './App.scss';
 import {NavBar} from './components/navBar'
 import {Route,Switch,BrowserRouter as Router,Link} from 'react-router-dom'
 import {routes} from './routes/routes'
+import {apiKey} from './api.key'
+import axios from 'axios'
 
 export class App extends Component{
   constructor(props){
@@ -15,11 +17,14 @@ export class App extends Component{
     this.search = this.search.bind(this)
     this.changeName = this.changeName.bind(this)
   }
-  componentDidMount(){
-    //api call
-  }
-  search(event){
-    console.log("a buscar",event.target.value)
+  async search(){
+    try {
+      const resp =await axios.get(`http://superheroapi.com/api/${apiKey}/search/${this.state.name}`)
+      console.log({resp})
+      this.setState({...this.state,heroes:resp.data.results})
+    } catch (error) {
+      console.error("Error->",error)
+    }
   }
   changeName(event){
     console.log(event.target.value)
