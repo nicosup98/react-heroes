@@ -1,0 +1,16 @@
+@keyframes img-hover {
+    0%{
+        transform: scale(1);
+        transition: 1s linear;
+    }
+
+    25%{
+        transform: scale(1.1);
+        transition: 1s linear;
+    }
+
+    50%{
+        transform: scale(1.0);
+        transition: 1s linear;
+    }
+}

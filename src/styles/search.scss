@@ -1,0 +1,23 @@
+@import './theme.scss';
+.img-hover{
+    cursor: pointer;
+    transition: ease-in-out .2s;
+}
+
+.img-hover:hover {
+   transform: scale(1.15);
+   transition: ease-in-out .2s;
+  
+}
+input{
+    width: 100%;
+}
+ 
+.scroll{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+
+

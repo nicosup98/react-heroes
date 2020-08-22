@@ -3,34 +3,20 @@ import './App.scss';
 import {NavBar} from './components/navBar'
 import {Route,Switch,BrowserRouter as Router,Link} from 'react-router-dom'
 import {routes} from './routes/routes'
-import {apiKey} from './api.key'
-import axios from 'axios'
 
 export class App extends Component{
+
   constructor(props){
-    // encontrar el one-liner de esto
     super(props)
+    this.setListHeroes = this.setListHeroes.bind(this)
     this.state = {
       heroes:[],
-      name:""
-    }
-    this.search = this.search.bind(this)
-    this.changeName = this.changeName.bind(this)
-  }
-  async search(){
-    try {
-      const resp =await axios.get(`http://superheroapi.com/api/${apiKey}/search/${this.state.name}`)
-      console.log({resp})
-      this.setState({...this.state,heroes:resp.data.results})
-    } catch (error) {
-      console.error("Error->",error)
+      setListHeroes:this.setListHeroes
     }
   }
-  changeName(event){
-    console.log(event.target.value)
-    let {name} = this.state
-    name =event.target.value
-    this.setState({...this.state,name})
+
+  setListHeroes(heroes){
+    this.setState(prev=>({...prev,heroes}))
   }
   
   render(){
@@ -51,7 +37,7 @@ export class App extends Component{
                     key={i}
                     path={route.path}
                     exact={route.exact}
-                    children={<route.component {...this.state} search={this.search} changeName={this.changeName} />}
+                    children={<route.component {...this.state} />}
                   />
                 ))}
               </Switch>
